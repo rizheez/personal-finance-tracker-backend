@@ -1,4 +1,8 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Personal Finance Tracker (PFT) REST API
+
+<p align="center">
+<a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="200" alt="Laravel Logo"></a>
+</p>
 
 <p align="center">
 <a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
@@ -7,55 +11,168 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
 
-## About Laravel
+## About PFT REST API
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+Personal Finance Tracker (PFT) is a comprehensive REST API built with Laravel that helps users manage their personal finances effectively. The API provides endpoints for tracking income and expenses, categorizing transactions, and generating financial insights through dashboard analytics.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## Features
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+### 🔐 Authentication & Authorization
 
-## Learning Laravel
+-   User registration and login with Laravel Sanctum
+-   Secure token-based authentication
+-   Protected API endpoints
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+### 💰 Transaction Management
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+-   Create, read, update, and delete transactions
+-   Support for income and expense tracking
+-   Transaction categorization
+-   Date-based filtering and search functionality
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+### 📊 Categories
 
-## Laravel Sponsors
+-   Custom category creation with color coding
+-   Category-based transaction organization
+-   User-specific categories
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+### 📈 Dashboard Analytics
 
-### Premium Partners
+-   Financial summary overview
+-   Monthly summary reports
+-   Recent transactions list
+-   Category breakdown analysis
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+### 🛠 Technical Features
 
-## Contributing
+-   RESTful API design
+-   Repository pattern implementation
+-   Request validation
+-   Resource transformation
+-   Comprehensive error handling
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+## API Endpoints
 
-## Code of Conduct
+### Authentication
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+-   `POST /api/v1/auth/register` - User registration
+-   `POST /api/v1/auth/login` - User login
+-   `POST /api/v1/auth/logout` - User logout (authenticated)
 
-## Security Vulnerabilities
+### Transactions
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+-   `GET /api/v1/transactions` - List all transactions
+-   `POST /api/v1/transactions` - Create new transaction
+-   `GET /api/v1/transactions/{id}` - Get specific transaction
+-   `PUT /api/v1/transactions/{id}` - Update transaction
+-   `DELETE /api/v1/transactions/{id}` - Delete transaction
 
-## License
+### Categories
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+-   `GET /api/v1/categories` - List all categories
+-   `POST /api/v1/categories` - Create new category
+-   `GET /api/v1/categories/{id}` - Get specific category
+-   `PUT /api/v1/categories/{id}` - Update category
+-   `DELETE /api/v1/categories/{id}` - Delete category
+
+### Dashboard
+
+-   `GET /api/v1/dashboard/summary` - Get financial summary
+-   `GET /api/v1/dashboard/monthly-summary` - Get monthly summary
+-   `GET /api/v1/dashboard/recent-transactions` - Get recent transactions
+-   `GET /api/v1/dashboard/category-breakdown` - Get category breakdown
+
+## Technology Stack
+
+-   **Framework**: Laravel 12.x
+-   **PHP**: ^8.2
+-   **Authentication**: Laravel Sanctum
+-   **Database**: MySQL/PostgreSQL/SQLite
+-   **Testing**: Pest PHP
+-   **Code Quality**: Laravel Pint
+
+## Installation
+
+1. **Clone the repository**
+
+    ```bash
+    git clone <repository-url>
+    cd pft-restAPI
+    ```
+
+2. **Install dependencies**
+
+    ```bash
+    composer install
+    ```
+
+3. **Environment setup**
+
+    ```bash
+    cp .env.example .env
+    php artisan key:generate
+    ```
+
+4. **Database configuration**
+
+    ```bash
+    # Update .env file with your database credentials
+    php artisan migrate
+    php artisan db:seed
+    ```
+
+5. **Start the development server**
+    ```bash
+    php artisan serve
+    ```
+
+## Development
+
+### Running Tests
+
+```bash
+php artisan test
+```
+
+### Code Formatting
+
+```bash
+./vendor/bin/pint
+```
+
+### Development Script
+
+```bash
+composer run dev
+```
+
+## Project Structure
+
+```
+app/
+├── Http/
+│   ├── Controllers/API/
+│   │   ├── Auth/AuthController.php
+│   │   └── V1/
+│   │       ├── CategoryController.php
+│   │       ├── DashboardController.php
+│   │       └── TransactionController.php
+│   ├── Requests/
+│   │   ├── CategoryRequest.php
+│   │   └── TransactionRequest.php
+│   └── Resources/
+│       ├── CategoryResource.php
+│       └── TransactionResource.php
+├── Interface/
+│   ├── CategoryRepositoryInterface.php
+│   └── TransactionRepositoryInterface.php
+├── Models/
+│   ├── Category.php
+│   ├── Transaction.php
+│   └── User.php
+└── Repositories/
+    ├── CategoryRepository.php
+    └── TransactionRepository.php
+```
+
+---
