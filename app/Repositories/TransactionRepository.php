@@ -103,13 +103,14 @@ class TransactionRepository implements TransactionRepositoryInterface
 
         $monthlyIncome = Transaction::whereMonth('date', date('m'))->whereYear('date', date('Y'))->where('type', 'income')->sum('amount');
         $monthlyExpense = Transaction::whereMonth('date', date('m'))->whereYear('date', date('Y'))->where('type', 'expense')->sum('amount');
-
+        $total_transaction = Transaction::count();
         return [
             'total_income' => $totalIncome,
             'total_expense' => $totalExpense,
             'balance' => $balance,
             'monthly_income' => $monthlyIncome,
-            'monthly_expense' => $monthlyExpense
+            'monthly_expense' => $monthlyExpense,
+            'total_transaction' => $total_transaction
         ];
     }
 
